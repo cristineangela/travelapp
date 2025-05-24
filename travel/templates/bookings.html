@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+  <h2>Your Bookings</h2>
+
+    {% if bookings %}
+      <ul>
+        {% for booking in bookings %}
+          <div class="row">
+            <div class="card shadow-sm border-dark mb-3">
+              <div class="card-body">
+                <h5 class="card-title">{{ booking.destination.name }}</h5>
+                <p class="card-text">
+                  Booked on {{ booking.booking_date.strftime('%Y-%m-%d') }}
+                </p>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p class="text-muted mt-3">You have no bookings yet.</p>
+    {% endif %}
+</div>
+{% endblock %}
